@@ -14,10 +14,10 @@ export default {
     this.createPopper()
   },
   updated() {
-    if (this.popperJs) this.popperJs.scheduleUpdate()
+    this.updatePopper()
   },
   beforeDestroy() {
-    if (this.popperJs) this.popperJs.destroy()
+    this.destroyPopper()
   },
   props: {
     referenceElm: Object,
@@ -40,7 +40,14 @@ export default {
   },
   methods: {
     createPopper() {
+      this.destroyPopper()
       this.popperJs = new Popper(this.referenceEle, this.$refs.vuePropper, this.popperOptions)
+    },
+    updatePopper() {
+      if (this.popperJs) this.popperJs.scheduleUpdate()
+    },
+    destroyPopper() {
+      if (this.popperJs) this.popperJs.destroy()
     },
   },
 }

@@ -41,9 +41,11 @@ export default {
       return this.referenceElm || window
     },
     options() {
+      const { modifiers } = this.popperOptions || {}
       return {
         ...this.popperOptions,
         modifiers: {
+          ...modifiers,
           arrow: {
             fn: this.arrowModifier,
             element: '[x-arrow]',

@@ -15,11 +15,17 @@ const conf = entry => Object.assign({}, baseConf, {
     format,
     name: 'VuePopper',
   })),
-  external: ['popper.js'],
+  external: entry.external ? ['popper.js'] : [],
   plugins: baseConf.plugins.concat([(entry.needUglify !== false && uglify())]),
 })
 
 export default [
-  { name: 'index', filename: './src/components/Index.vue', formats: ['es'], needUglify: false },
+  {
+    name: 'index',
+    filename: './src/components/Index.vue',
+    formats: ['es'],
+    needUglify: false,
+    external: true,
+  },
   { name: 'index', filename: './src/components/Index.vue', formats: ['umd'] },
 ].map(conf)

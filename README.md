@@ -1,5 +1,7 @@
 # @livelybone/vue-popper 
-<img src="https://img.shields.io/badge/dependency-popper.js-blue.svg"> <img src=https://img.shields.io/badge/gzip-1.2kb-brightgreen.svg> <img src=https://img.shields.io/badge/arrow--control-true-blue.svg>
+![dependency: popper.js](https://img.shields.io/badge/dependency-popper.js-blue.svg "dependency: popper.js")
+![gzip: 7.4kb](https://img.shields.io/badge/gzip-7.4kb-brightgreen.svg "gzip: 7.4kb")
+![arrow control supported](https://img.shields.io/badge/arrow--control-supported-blue.svg "arrow control supported")
 
 A vue component of popper.js
 

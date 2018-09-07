@@ -1,6 +1,6 @@
 {
   "name": "@livelybone/vue-popper",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "A vue component of popper.js",
   "main": "./lib/umd/index.js",
   "module": "./lib/es/index.js",

@@ -1,4 +1,7 @@
-# @livelybone/vue-popper
+# @livelybone/vue-popper 
+<img src="https://img.shields.io/badge/dependency-popper.js-blue.svg">
+<img src=https://img.shields.io/badge/gzip-1.2kb-light-brightgreen.svg>
+<img src=https://img.shields.io/badge/arrow--control-true-blue.svg>
 A vue component of popper.js
 
 `popper.js` see: https://popper.js.org
@@ -28,10 +31,12 @@ new Vue({
 ```
 
 ## Props
-| Name              | Type                                      | DefaultValue              | Description  |
-| ----------------- | ----------------------------------------- | ------------------------- | ------------ |
-| `referenceElm`    | `HTMLElement`                             | `false`                   | Prop `reference` of popper.js  |
-| `popperOptions`   | `Object`                                  | Defaults of popper.js     | Prop `options` of popper.js |
+| Name                    | Type                                      | DefaultValue              | Description  |
+| ----------------------- | ----------------------------------------- | ------------------------- | ------------ |
+| `arrowPosition`         | `String`                                  | `middle`                  | Set the position of arrow, options: `middle start end`  |
+| `arrowOffsetScaling`    | `Number`                                  | `1`                       | Set the left offset scaling of arrow, usually to be `window.devicePixelRatio`  |
+| `referenceElm`          | `HTMLElement`                             | `false`                   | Prop `reference` of popper.js  |
+| `popperOptions`         | `Object`                                  | Defaults of popper.js     | Prop `options` of popper.js |
 
 ## style
 For building style, you can use the css or scss file in lib directory. 

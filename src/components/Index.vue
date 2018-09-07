@@ -20,6 +20,14 @@ export default {
     this.destroyPopper()
   },
   props: {
+    arrowPosition: {
+      default: 'middle',
+      type: String,
+    }, // ['middle', 'start', 'end']
+    arrowOffsetScaling: {
+      default: 1,
+      type: Number,
+    },
     referenceElm: Object,
     popperOptions: Object,
   },
@@ -32,6 +40,20 @@ export default {
     referenceEle() {
       return this.referenceElm || window
     },
+    options() {
+      return {
+        ...this.popperOptions,
+        modifiers: {
+          arrow: {
+            fn: this.arrowModifier,
+            element: '[x-arrow]',
+          },
+        },
+      }
+    },
+    arrowOffset() {
+      return 10 * this.arrowOffsetScaling
+    },
   },
   watch: {
     referenceEle() {
@@ -41,13 +63,46 @@ export default {
   methods: {
     createPopper() {
       this.destroyPopper()
-      this.popperJs = new Popper(this.referenceEle, this.$refs.vuePropper, this.popperOptions)
+      this.popperJs = new Popper(this.referenceEle, this.$refs.vuePropper, this.options)
     },
     updatePopper() {
       if (this.popperJs) this.popperJs.scheduleUpdate()
     },
     destroyPopper() {
       if (this.popperJs) this.popperJs.destroy()
+    },
+    arrowModifier(dataObject, options) {
+      const data = Popper.Defaults.modifiers.arrow.fn(dataObject, options)
+      const { offsets: { arrow: { left, top }, reference, popper }, arrowElement } = data
+
+      data.offsets.arrow.left = this.convertPos(left, popper, reference, arrowElement)
+      data.offsets.arrow.top = this.convertPos(top, popper, reference, arrowElement, 'top')
+
+      return data
+    },
+    convertPos(pos, popper, reference, arrowElement, type = 'left') {
+      let pos1 = ''
+
+      const altSide = type === 'left' ? 'left' : 'top'
+      const len = type === 'left' ? 'width' : 'height'
+      const offsetLen = type === 'left' ? 'offsetWidth' : 'offsetHeight'
+
+      if (typeof pos === 'number') {
+        if (this.arrowPosition === 'start') {
+          pos1 = this.arrowOffset + Math.max(0, -(popper[altSide] - reference[altSide]))
+        } else if (this.arrowPosition === 'end') {
+          pos1 = Math.min(reference[len], popper[len])
+            - Math.min(0, popper[altSide] - reference[altSide])
+            - this.arrowOffset - arrowElement[offsetLen]
+        } else if (pos < this.arrowOffset) {
+          pos1 = this.arrowOffset
+        } else if (pos > popper[len] - arrowElement[offsetLen] - this.arrowOffset) {
+          pos1 = popper[len] - arrowElement[offsetLen] - this.arrowOffset
+        } else {
+          pos1 = pos
+        }
+      }
+      return pos1
     },
   },
 }

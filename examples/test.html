@@ -10,11 +10,11 @@
   <link rel="stylesheet" href="../lib/css/index.css">
   <style>
   body {
-
+    margin: 0;
   }
 
   .reference {
-    position: fixed;
+    position: relative;
     left: 0;
     top: 0;
     width: 400px;
@@ -36,14 +36,20 @@
 new Vue({
   el: '#module',
   template: '<div class="reference" ref="reference" :style="style" @mouseenter="show=true" @mousedown="drag=true" @mouseup="drag=false" @mousemove="move" @mouseleave="show=true">' +
-  '<popper v-if="show" :referenceElm="$refs.reference" :popperOptions="options" arrowPosition="end"><div class="content">sdfsdf</div></popper>' +
+  '<popper v-if="show" :referenceElm="$refs.reference" :popperOptions="options" arrowPosition="start"><div class="content">sdfsdf</div></popper>' +
   '</div>',
   data: function () {
     return {
-      show: true,
+      show: false,
       drag: false,
       options: {
-        placement: 'left-end',
+        placement: 'bottom-start',
+        positionFixed: true,
+        modifiers: {
+          preventOverflow: {
+            padding: 20,
+          },
+        },
       },
       style: null,
     }
@@ -52,11 +58,11 @@ new Vue({
     move: function (e) {
       if (this.drag) this.style = {
         left: (e.pageX - this.$refs.reference.clientWidth / 2) + 'px',
-        top: (e.pageY - this.$refs.reference.clientHeight / 2) + 'px'
+        top: (e.pageY - this.$refs.reference.clientHeight / 2) + 'px',
       }
-    }
+    },
   },
-  components: { 'popper': VuePopper }
+  components: { 'popper': VuePopper },
 })
 </script>
 </body>

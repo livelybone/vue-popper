@@ -28,7 +28,7 @@ export default {
       default: 1,
       type: Number,
     },
-    referenceElm: Object,
+    referenceElm: [Window, Element, Document],
     popperOptions: Object,
   },
   data() {

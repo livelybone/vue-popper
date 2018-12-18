@@ -1,7 +1,7 @@
 {
   "name": "@livelybone/vue-popper",
   "version": "1.6.0",
-  "description": "A vue component of popper.js",
+  "description": "A vue component of popper.js, and the arrow position control is implemented",
   "main": "./lib/umd/index.js",
   "module": "./lib/es/index.js",
   "unpkg": "./lib/umd/index.js",

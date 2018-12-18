@@ -6,7 +6,7 @@
 
 > `pkg.module supported`, which means that you can apply tree-shaking in you project
 
-A vue component of popper.js
+A vue component of popper.js, and the arrow position control is implemented
 
 `popper.js` see: https://popper.js.org
 

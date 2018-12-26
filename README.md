@@ -14,7 +14,7 @@ A vue component of popper.js, and the arrow position control is implemented
 https://github.com/livelybone/vue-popper.git
 
 ## Demo
-https://github.com/livelybone/vue-popper#readme
+https://livelybone.github.io/vue/vue-popper
 
 ## Installation
 ```bash

@@ -28,7 +28,7 @@ export default {
       default: 1,
       type: Number,
     },
-    referenceElm: [Window, Element, Document],
+    referenceElm: typeof window !== 'undefined' ? [Window, Element, Document] : Object,
     popperOptions: Object,
   },
   data() {
@@ -38,7 +38,7 @@ export default {
   },
   computed: {
     referenceEle() {
-      return this.referenceElm || window
+      return typeof window !== 'undefined' ? this.referenceElm || window : {}
     },
     options() {
       const { modifiers } = this.popperOptions || {}

@@ -3,6 +3,7 @@
 ![gzip: 7.4kb](https://img.shields.io/badge/gzip-7.4kb-brightgreen.svg "gzip: 7.4kb")
 ![pkg.module](https://img.shields.io/badge/pkg.module-supported-blue.svg "pkg.module")
 ![arrow control supported](https://img.shields.io/badge/arrow--control-supported-blue.svg "arrow control supported")
+![ssr supported](https://img.shields.io/badge/ssr-supported-blue.svg "ssr supported")
 
 > `pkg.module supported`, which means that you can apply tree-shaking in you project
 

@@ -40,7 +40,7 @@ new Vue({
 | ----------------------- | ----------------------------------------- | ------------------------- | ------------ |
 | `arrowPosition`         | `String`                                  | `middle`                  | Set the position of arrow, options: `middle start end`  |
 | `arrowOffsetScaling`    | `Number`                                  | `1`                       | Set the left offset scaling of arrow, usually to be `window.devicePixelRatio`  |
-| `referenceElm`          | `HTMLElement`                             | `false`                   | Prop `reference` of popper.js  |
+| `referenceElm`          | `HTMLElement`                             | `parentNode`              | Prop `reference` of popper.js  |
 | `popperOptions`         | `Object`                                  | Defaults of popper.js     | Prop `options` of popper.js |
 
 ## style

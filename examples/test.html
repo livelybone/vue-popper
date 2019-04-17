@@ -36,7 +36,7 @@
 new Vue({
   el: '#module',
   template: '<div class="reference" ref="reference" :style="style" @mouseenter="show=true" @mousedown="drag=true" @mouseup="drag=false" @mousemove="move" @mouseleave="show=true">' +
-  '<popper v-if="show" :referenceElm="$refs.reference" :popperOptions="options" arrowPosition="start"><div class="content">sdfsdf</div></popper>' +
+  '<popper v-if="show" :popperOptions="options" arrowPosition="start"><div class="content">sdfsdf</div></popper>' +
   '</div>',
   data: function () {
     return {

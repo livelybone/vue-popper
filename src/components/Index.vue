@@ -1,5 +1,5 @@
 <template>
-  <div class="vue-popper" ref="vuePropper">
+  <div class="vue-popper" ref="vuePopper">
     <div class="arrow" x-arrow></div>
     <slot/>
   </div>
@@ -10,15 +10,6 @@ import Popper from 'popper.js'
 
 export default {
   name: 'Index',
-  mounted() {
-    this.createPopper()
-  },
-  updated() {
-    this.updatePopper()
-  },
-  beforeDestroy() {
-    this.destroyPopper()
-  },
   props: {
     arrowPosition: {
       default: 'middle',
@@ -33,12 +24,15 @@ export default {
   },
   data() {
     return {
+      el: null,
       popperJs: null,
     }
   },
   computed: {
     referenceEle() {
-      return typeof window !== 'undefined' ? this.referenceElm || window : {}
+      if (this.referenceElm) return this.referenceElm
+      if (typeof window === 'undefined' || !this.el) return null
+      return this.el.parentNode || window
     },
     options() {
       const { modifiers } = this.popperOptions || {}
@@ -63,9 +57,14 @@ export default {
     },
   },
   methods: {
+    getElement() {
+      this.el = this.$refs.vuePopper
+    },
     createPopper() {
-      this.destroyPopper()
-      this.popperJs = new Popper(this.referenceEle, this.$refs.vuePropper, this.options)
+      if (this.referenceEle) {
+        this.destroyPopper()
+        this.popperJs = new Popper(this.referenceEle, this.el, this.options)
+      }
     },
     updatePopper() {
       if (this.popperJs) this.popperJs.scheduleUpdate()
@@ -106,6 +105,17 @@ export default {
       }
       return pos1
     },
+  },
+  mounted() {
+    this.getElement()
+    this.createPopper()
+  },
+  updated() {
+    this.getElement()
+    this.updatePopper()
+  },
+  beforeDestroy() {
+    this.destroyPopper()
   },
 }
 </script>

@@ -11,15 +11,18 @@ import Popper from 'popper.js'
 export default {
   name: 'Index',
   props: {
+    // Options: ['middle', 'start', 'end']
     arrowPosition: {
       default: 'middle',
       type: String,
-    }, // ['middle', 'start', 'end']
+    },
     arrowOffsetScaling: {
       default: 1,
       type: Number,
     },
-    referenceElm: typeof window !== 'undefined' ? [Window, Element, Document] : Object,
+    referenceElm: typeof window !== 'undefined'
+      ? [Window, Element, Document]
+      : Object,
     popperOptions: Object,
   },
   data() {

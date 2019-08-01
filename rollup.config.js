@@ -7,7 +7,7 @@ import packageConf from './package.json'
 
 const baseConf = require('./rollup.config.base')
 
-const formats = ['es', 'umd']
+// const formats = ['es', 'umd']
 
 fs.copyFileSync(
   path.resolve(__dirname, './src/css/index.scss'),
@@ -15,23 +15,23 @@ fs.copyFileSync(
 )
 console.log('>> css file copy successful')
 
-function getEntries() {
-  const reg = /\.vue$/
-  return fs
-    .readdirSync(path.resolve(__dirname, './src/components'))
-    .filter(
-      filename =>
-        reg.test(filename) &&
-        !fs
-          .statSync(path.resolve(__dirname, './src/components', filename))
-          .isDirectory(),
-    )
-    .map(filename => ({
-      name: filename.replace(reg, ''),
-      filename: path.resolve(__dirname, './src/components', filename),
-      formats: formats.filter(f => f !== 'es'),
-    }))
-}
+// function getEntries() {
+//   const reg = /\.vue$/
+//   return fs
+//     .readdirSync(path.resolve(__dirname, './src/components'))
+//     .filter(
+//       filename =>
+//         reg.test(filename) &&
+//         !fs
+//           .statSync(path.resolve(__dirname, './src/components', filename))
+//           .isDirectory(),
+//     )
+//     .map(filename => ({
+//       name: filename.replace(reg, ''),
+//       filename: path.resolve(__dirname, './src/components', filename),
+//       formats: formats.filter(f => f !== 'es'),
+//     }))
+// }
 
 const conf = entry => ({
   ...baseConf,
@@ -64,5 +64,5 @@ export default [
     external: true,
   },
   { name: 'index', filename: './src/index.js', formats: ['umd'] },
-  ...getEntries(),
+  // ...getEntries(),
 ].map(conf)

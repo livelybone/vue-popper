@@ -1,85 +1,54 @@
 # @livelybone/vue-popper
 [![NPM Version](http://img.shields.io/npm/v/@livelybone/vue-popper.svg?style=flat-square)](https://www.npmjs.com/package/@livelybone/vue-popper)
 [![Download Month](http://img.shields.io/npm/dm/@livelybone/vue-popper.svg?style=flat-square)](https://www.npmjs.com/package/@livelybone/vue-popper)
-![gzip with dependencies: kb](https://img.shields.io/badge/gzip--with--dependencies-kb-brightgreen.svg "gzip with dependencies: kb")
+![gzip with dependencies: 8.5kb](https://img.shields.io/badge/gzip--with--dependencies-8.5kb-brightgreen.svg "gzip with dependencies: 8.5kb")
 ![typescript](https://img.shields.io/badge/typescript-supported-blue.svg "typescript")
 ![pkg.module](https://img.shields.io/badge/pkg.module-supported-blue.svg "pkg.module")
+![arrow control supported](https://img.shields.io/badge/arrow--control-supported-blue.svg "arrow control supported")
+![ssr supported](https://img.shields.io/badge/ssr-supported-blue.svg "ssr supported")
 
 > `pkg.module supported`, which means that you can apply tree-shaking in you project
 
 A vue component of popper.js, and the arrow position control is implemented
 
+`popper.js` see: https://popper.js.org
+
 ## repository
 https://github.com/livelybone/vue-popper.git
 
 ## Demo
-https://github.com/livelybone/vue-popper#readme
+https://livelybone.github.io/vue/vue-popper/
 
 ## Installation
 ```bash
 npm i -S @livelybone/vue-popper
 ```
 
-## Global name
-`VuePopper`
-
-## Usage
+## Register
 ```js
 import VuePopper from '@livelybone/vue-popper'
-import '@livelybone/vue-popper/lib/css/index.css';
 
 // Global register
-Vue.component('VuePopper', VuePopper)
+Vue.component('popper', VuePopper)
 
 // Local register
 new Vue({
-  components:{VuePopper}
+  components:{'popper': VuePopper}
 })
 ```
 
-when you want to set this module as external while you are developing another module, you should import it like this:
-```js
-import * as VuePopper  from '@livelybone/vue-popper'
-
-// then use it by need
-```
-
-Use in html, see what your can use in [CDN: unpkg](https://unpkg.com/@livelybone/vue-popper/lib/umd/)
-```html
-<-- use what you want -->
-<script src="https://unpkg.com/@livelybone/vue-popper/lib/umd/<--module-->.js"></script>
-```
-
 ## Props
-| Name                      | Type                                      | DefaultValue                                  | Description  |
-| ------------------------- | ----------------------------------------- | --------------------------------------------- | ------------ |
-| `prop`                    | `type`                                    | none                                          | Description |
-
-
-## Events
-| Name              | EmittedData           | Description                                       |
-| ----------------- | --------------------- | ------------------------------------------------- |
-| `event`           | `type`                |  |
+| Name                    | Type                                      | DefaultValue              | Description  |
+| ----------------------- | ----------------------------------------- | ------------------------- | ------------ |
+| `arrowPosition`         | `String`                                  | `middle`                  | Set the position of arrow, options: `middle start end`  |
+| `arrowOffsetScaling`    | `Number`                                  | `window.devicePixelRatio` or `1`                       | Set the left offset scaling of arrow  |
+| `referenceElm`          | `HTMLElement`                             | the parentNode of the component instance              | Prop `reference` of popper.js  |
+| `popperOptions`         | `Object`                                  | Defaults of popper.js     | Prop `options` of popper.js |
 
 ## style
-For building style, you can use the css or scss file in lib directory.
-```js
-// scss
-import 'node_modules/@livelybone/vue-popper/lib/css/index.scss'
+Since 2.3.0， you don't need to import the css file in your project, because the style will be injected inline
 
-// css
-import 'node_modules/@livelybone/vue-popper/lib/css/index.css'
-```
-Or
-```scss
-// scss
-@import 'node_modules/@livelybone/vue-popper/lib/css/index.scss'
-
-// css
-@import 'node_modules/@livelybone/vue-popper/lib/css/index.css'
-```
-
-Or, you can build your custom style by copying and editing `index.scss`
+For rewrite style, you can copy the `index.scss` or `index.css` file, rewrite it, and the import the file in your project
 
 ## QA
 

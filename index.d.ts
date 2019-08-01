@@ -3,31 +3,38 @@ import { PopperOptions } from 'popper.js'
 
 export type ArrowPosition = 'middle' | 'start' | 'end'
 
-declare class VuePopper extends Vue {
+export interface VuePopperProps {
   /**
    * Set the position of arrow
    *
    * Default to 'middle'
    * */
-  arrowPosition: ArrowPosition
+  arrowPosition?: ArrowPosition
   /**
    * Set the left offset scaling of arrow
    *
    * Default to: window.devicePixelRatio || 1
    * */
-  arrowOffsetScaling: number
+  arrowOffsetScaling?: number
   /**
    * Prop `reference` of popper.js
    *
    * Default to the parentNode of the component instance
    * */
-  referenceElm: Element
+  referenceElm?: Element
   /**
    * Prop `options` of popper.js
    *
    * Default to the defaults of popper.js
    * */
-  popperOptions: PopperOptions
+  popperOptions?: PopperOptions
+}
+
+declare class VuePopper extends Vue implements VuePopperProps {
+  arrowPosition?: ArrowPosition
+  arrowOffsetScaling?: number
+  referenceElm?: Element
+  popperOptions?: PopperOptions
 }
 
 export default VuePopper

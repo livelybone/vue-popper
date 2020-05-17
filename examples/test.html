@@ -1,33 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Title</title>
-  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-  <script src="../node_modules/popper.js/dist/umd/popper.js"></script>
-  <script src="../lib/umd/index.js"></script>
-  <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="../lib/umd/index.js"></script>
+    <style>
     body {
-      margin: 0;
+        margin: 0;
     }
 
     .reference {
-      position: relative;
-      left: 0;
-      top: 0;
-      width: 400px;
-      height: 200px;
-      border: 1px dashed #666;
+        position: relative;
+        left: 0;
+        top: 0;
+        width: 400px;
+        height: 200px;
+        border: 1px dashed #666;
     }
 
     .content {
-      width: 10vw;
-      min-width: 8em;
-      height: 10vh;
-      padding: .2em .4em;
+        width: 10vw;
+        min-width: 8em;
+        height: 10vh;
+        padding: .2em .4em;
     }
-  </style>
+    </style>
 </head>
 <body>
 <div id="module"></div>
@@ -36,8 +35,21 @@
 
 new Vue({
   el: '#module',
-  template: '<div class="reference" ref="reference" :style="style" @mouseenter="show=true" @mousedown="drag=true" @mouseup="drag=false" @mousemove="move" @mouseleave="show=true">' +
-    '<popper v-if="show" :popperOptions="options" arrowPosition="start"><div class="content">sdfsdf</div></popper>' +
+  template: '<div' +
+    ' class="reference"' +
+    ' ref="reference"' +
+    ' :style="style"' +
+    ' @mouseenter="show=true"' +
+    ' @mousedown="drag=true"' +
+    ' @mouseup="drag=false"' +
+    ' @mousemove="move"' +
+    ' @mouseleave="show=true">' +
+    '   <popper' +
+    '       v-if="show"' +
+    '       :popperOptions="options"' +
+    '       arrowPosition="start"><div' +
+    '       class="content">sdfsdf</div>' +
+    '   </popper>' +
     '</div>',
   data: function () {
     return {

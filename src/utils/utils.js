@@ -1,3 +1,5 @@
+import Popper from 'popper.js'
+
 export const isBrowser =
   typeof window !== 'undefined' && typeof document !== 'undefined'
 

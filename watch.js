@@ -24,7 +24,6 @@ function serve() {
         const app = express()
         app.use('/examples', express.static(path.resolve('./examples')))
         app.use('/lib', express.static(path.resolve('./lib')))
-        app.use('/node_modules', express.static(path.resolve('./node_modules')))
         app.listen(port, e => {
           if (e) {
             console.log(chalk.red(e))

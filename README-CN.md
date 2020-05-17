@@ -5,9 +5,9 @@
 ![typescript](https://img.shields.io/badge/typescript-supported-blue.svg "typescript")
 ![pkg.module](https://img.shields.io/badge/pkg.module-supported-blue.svg "pkg.module")
 
-> `pkg.module supported`, which means that you can apply tree-shaking in you project
+> `pkg.module supported`, 天然支持 tree-shaking, 使用 es module 引用即可
 
-[中文文档](./README-CN.md)
+[English Document](./README.md)
 
 A vue component of popper.js, and the arrow position control is implemented
 
@@ -18,13 +18,13 @@ https://github.com/livelybone/vue-popper.git
 https://livelybone.github.io/vue/vue-popper/
 
 ## Run Example
-Your can see the usage by run the example of the module, here is the step:
+你可以通过运行项目的 example 来了解这个组件的使用，以下是启动步骤：
 
-1. Clone the library `git clone https://github.com/livelybone/vue-popper.git`
-2. Go to the directory `cd your-module-directory`
-3. Install npm dependencies `npm i`(use taobao registry: `npm i --registry=http://registry.npm.taobao.org`)
-4. Open service `npm run dev`
-5. See the example(usually is `http://127.0.0.1:3000/examples/test.html`) in your browser
+1. 克隆项目到本地 `git clone https://github.com/livelybone/vue-popper.git`
+2. 进入本地克隆目录 `cd your-module-directory`
+3. 安装项目依赖 `npm i`(使用 taobao 源: `npm i --registry=http://registry.npm.taobao.org`)
+4. 启动服务 `npm run dev`
+5. 在你的浏览器看 example (地址通常是 `http://127.0.0.1:3000/examples/test.html`)
 
 ## Installation
 ```bash
@@ -35,17 +35,17 @@ npm i -S @livelybone/vue-popper
 `VuePopper`
 
 ## Interface
-See what method or params you can use in [index.d.ts](./index.d.ts)
+去 [index.d.ts](./index.d.ts) 查看可用方法和参数
 
 ## Usage
 ```js
 import VuePopper from '@livelybone/vue-popper'
 import '@livelybone/vue-popper/lib/css/index.css';
 
-// Global register
+// 全局注册
 Vue.component('VuePopper', VuePopper)
 
-// Local register
+// 局部注册
 new Vue({
   components:{VuePopper}
 })
@@ -68,4 +68,4 @@ For rewrite style, you can copy the `index.scss` or `index.css` file, rewrite it
 
 1. Error `Error: spawn node-sass ENOENT`
 
-> You may need install node-sass globally, `npm i -g node-sass`
+> 你可能需要全局安装 node-sass，`npm i -g node-sass`

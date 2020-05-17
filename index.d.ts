@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import Vue from 'vue'
 import { PopperOptions } from 'popper.js'
 
@@ -32,8 +33,11 @@ export interface VuePopperProps {
 
 declare class VuePopper extends Vue implements VuePopperProps {
   arrowPosition?: ArrowPosition
+
   arrowOffsetScaling?: number
+
   referenceElm?: Element
+
   popperOptions?: PopperOptions
 }
 
